@@ -11,7 +11,7 @@ export function Router() {
     <Switch>
       <Route path="/login" component={Login} />
       <Route path="/">
-        <Redirect to="/login" />
+        <Redirect to="/home" />
       </Route>
       <Route
         path="/home"
