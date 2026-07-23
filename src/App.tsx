@@ -1,26 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import { useLocation } from "wouter";
+import { AuthProvider } from "./lib/auth";
+import Layout from "./layout";
 
+import { Router } from "./route";
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  const [location] = useLocation();
+  const hideLayoutList = ["/login"];
+  const isAuthPage = hideLayoutList.includes(location);
+  const content = isAuthPage ? (
+    <Router />
+  ) : (
+    <Layout>
+      <Router />
+    </Layout>
   );
+  return <AuthProvider>{content}</AuthProvider>;
 }
 
 export default App;

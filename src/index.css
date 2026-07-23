@@ -1,13 +1,107 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #f8fafc;
+  --foreground: #0f172a;
+
+  --card: #ffffff;
+  --card-foreground: #0f172a;
+
+  --popover: #ffffff;
+  --popover-foreground: #0f172a;
+
+  /* PRIMARY */
+  --primary: #2563eb;
+  --primary-foreground: #ffffff;
+
+  /* SECONDARY */
+  --secondary: #eff6ff;
+  --secondary-foreground: #1e3a8a;
+
+  /* ACCENT */
+  --accent: #dbeafe;
+  --accent-foreground: #1e40af;
+
+  /* TEXT */
+  --muted: #f1f5f9;
+  --muted-foreground: #64748b;
+
+  /* BORDERS */
+  --border: #e2e8f0;
+  --input: #e2e8f0;
+
+  --ring: #2563eb;
+
+  /* Sidebar */
+  --sidebar: #ffffff;
+  --sidebar-foreground: #0f172a;
+
+  --sidebar-primary: #2563eb;
+  --sidebar-primary-foreground: #ffffff;
+
+  --sidebar-accent: #eff6ff;
+  --sidebar-accent-foreground: #1e40af;
+
+  --sidebar-border: #e2e8f0;
+}
+
+.dark {
+  --background: #0f172a;
+  --foreground: #f8fafc;
+
+  --card: #1e293b;
+  --card-foreground: #f8fafc;
+
+  --popover: #1e293b;
+  --popover-foreground: #f8fafc;
+
+  /* PRIMARY */
+  --primary: #3b82f6;
+  --primary-foreground: #ffffff;
+
+  /* SECONDARY */
+  --secondary: #334155;
+  --secondary-foreground: #f8fafc;
+
+  /* ACCENT */
+  --accent: #1d4ed8;
+  --accent-foreground: #ffffff;
+
+  /* TEXT */
+  --muted: #1e293b;
+  --muted-foreground: #94a3b8;
+
+  /* BORDERS */
+  --border: #334155;
+  --input: #334155;
+
+  --ring: #3b82f6;
+
+  /* Sidebar */
+  --sidebar: #0f172a;
+  --sidebar-foreground: #f8fafc;
+
+  --sidebar-primary: #3b82f6;
+  --sidebar-primary-foreground: #ffffff;
+
+  --sidebar-accent: #1e40af;
+  --sidebar-accent-foreground: #ffffff;
+
+  --sidebar-border: #334155;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
+    "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family:
+    source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
