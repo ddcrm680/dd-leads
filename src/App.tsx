@@ -4,7 +4,7 @@ import "./App.css";
 import { useLocation } from "wouter";
 import { AuthProvider } from "./lib/auth";
 import Layout from "./layout";
-
+import "react-quill-new/dist/quill.snow.css";
 import { Router } from "./route";
 function App() {
   const [location] = useLocation();

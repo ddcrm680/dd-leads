@@ -22,12 +22,14 @@ import {
 import { Button } from "../../ui/button";
 import { Textarea } from "../../ui/textarea";
 import { useState } from "react";
+import RichTextEditor from "../common/RichTextEditor";
 
 export default function RightPanel() {
   const [showNotes, setShowNotes] = useState(true);
   const [showActivity, setShowActivity] = useState(true);
   const [showFiles, setShowFiles] = useState(true);
-  const [showFocus, setShowFocus] = useState(true);
+  const [value, setValue] = useState("");
+
   const [showHistory, setShowHistory] = useState(true);
   return (
     <div className="flex h-full flex-col bg-[#f5f5f6]">
@@ -49,46 +51,8 @@ export default function RightPanel() {
         {/* Editor */}
 
         <div className="bg-[#FFF7D7] ">
-          <Textarea
-            placeholder="Write a note..."
-            className="min-h-[120px] resize-none border-none bg-transparent shadow-none focus-visible:ring-0"
-          />
-
-          <div className="mt-4 flex items-center px-3 py-2 justify-between">
-            <div className="flex items-center gap-4 text-gray-600">
-              <Bold size={16} />
-
-              <Italic size={16} />
-
-              <Underline size={16} />
-
-              <Link size={16} />
-
-              <AtSign size={16} />
-
-              <List size={16} />
-
-              <ListOrdered size={16} />
-
-              <AlignLeft size={16} />
-
-              <Strikethrough size={16} />
-            </div>
-
-            <div className="flex items-center gap-3">
-              <Info size={16} className="text-gray-500" />
-              <Button
-                variant="outline"
-                type="button"
-                className="rounded-[4px] "
-              >
-                Cancel
-              </Button>
-
-              <Button className=" rounded-[4px] bg-green-600 hover:bg-green-700">
-                Save
-              </Button>
-            </div>
+          <div className="w-full ">
+            <RichTextEditor value={value} onChange={setValue} />
           </div>
         </div>
       </div>
