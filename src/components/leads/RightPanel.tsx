@@ -28,7 +28,33 @@ export default function RightPanel() {
   const [showNotes, setShowNotes] = useState(true);
   const [showActivity, setShowActivity] = useState(true);
   const [showFiles, setShowFiles] = useState(true);
-  const [value, setValue] = useState("");
+  const [editorValue, setEditorValue] = useState("");
+
+  const [notes, setNotes] = useState<
+    {
+      id: number;
+      content: string;
+      createdAt: Date;
+    }[]
+  >([]);
+  const handleSaveNote = () => {
+    if (!editorValue.trim()) return;
+
+    const newNote = {
+      id: Date.now(),
+      content: editorValue,
+      createdAt: new Date(),
+    };
+
+    // Add newest note at the beginning
+    setNotes((prev) => [newNote, ...prev]);
+
+    // Clear editor
+    setEditorValue("");
+  };
+  const [loading, setLoading] = useState(false);
+
+  const [aiResult, setAiResult] = useState("");
 
   const [showHistory, setShowHistory] = useState(true);
   return (
@@ -52,7 +78,11 @@ export default function RightPanel() {
 
         <div className="bg-[#FFF7D7] ">
           <div className="w-full ">
-            <RichTextEditor value={value} onChange={setValue} />
+            <RichTextEditor
+              value={editorValue}
+              onChange={setEditorValue}
+              onSave={handleSaveNote}
+            />{" "}
           </div>
         </div>
       </div>
@@ -75,13 +105,33 @@ export default function RightPanel() {
             )}
           </button>
 
-          {showNotes && (
+          {notes.length === 0 ? (
             <div className="flex flex-col items-center">
               <h3 className="text-[16px] font-semibold">No notes yet</h3>
 
-              <p className="mt-3 w-[300px] text-center text-[14px] text-gray-500">
-                Notes will appear here.
-              </p>
+              <p className="mt-3 text-gray-500">Notes will appear here.</p>
+            </div>
+          ) : (
+            <div className="space-y-4">
+              {notes.map((note) => (
+                <div
+                  key={note.id}
+                  className="rounded-[4px] border border-[#ffcfad] bg-[#fff2e9] px-4 py-2  transition"
+                >
+                  <div className="grid grid-cols-[70%_30%] gap-4 items-start">
+                    <div
+                      className="prose prose-sm min-w-0 italic text-xs break-words overflow-hidden"
+                      dangerouslySetInnerHTML={{
+                        __html: note.content,
+                      }}
+                    />
+
+                    <span className="text-right text-xs text-gray-500">
+                      {note.createdAt.toLocaleString()}
+                    </span>
+                  </div>
+                </div>
+              ))}
             </div>
           )}
         </div>

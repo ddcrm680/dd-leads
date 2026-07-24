@@ -13,6 +13,9 @@ export const menus = [
   },
 ];
 export const Constant = {
+  keys: {
+    GEMINI_KEY: process.env.REACT_GEMINI_KEY,
+  },
   leads: {
     contactPerson: "Contact person",
     org: "Organization",
