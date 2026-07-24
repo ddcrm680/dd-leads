@@ -113,7 +113,15 @@ export default function RichTextEditor({ value, onChange, onSave }: Props) {
   const formats = ["bold", "italic", "underline", "list", "bullet", "link"];
 
   return (
-    <div className="rounded-[4px] overflow-hidden border border-gray-300">
+    <div
+      className="
+rounded-md
+overflow-hidden
+border
+border-gray-300
+dark:border-gray-700
+"
+    >
       <ReactQuill
         theme="snow"
         value={value}
@@ -123,7 +131,20 @@ export default function RichTextEditor({ value, onChange, onSave }: Props) {
       />
 
       {/* Footer */}
-      <div className="flex items-center justify-between  border-t bg-white px-4 py-3">
+      <div
+        className="
+flex
+items-center
+justify-between
+border-t
+border-gray-200
+dark:border-gray-700
+bg-white
+dark:bg-gray-900
+px-4
+py-3
+"
+      >
         {/* <div className="flex items-center gap-2">
           <button
             onClick={() => improveNote("AI Improve")}

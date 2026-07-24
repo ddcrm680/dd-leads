@@ -374,9 +374,12 @@ export function Leads() {
           showBackdrop
           onClose={() => setSelectedLead(null)}
           side="right"
-          width={1000}
+          className={"!w-[100vw] lg:!w-[1000px]"}
+          // width="100vw"
         >
-          <ViewEditContent></ViewEditContent>
+          <ViewEditContent
+            onClose={() => setSelectedLead(null)}
+          ></ViewEditContent>
         </AnimatedDrawer>
       </div>
       <CommonDeleteModal

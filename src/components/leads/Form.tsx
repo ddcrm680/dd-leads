@@ -90,9 +90,9 @@ export default function LeadForm({
       >
         {/* Body */}
         <div className="   space-y-3 max-h-[60vh]  overflow-y-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2">
+          <div className="grid grid-cols-1 sm:grid-cols-2">
             {/* LEFT */}
-            <div className="border-r border-gray-200 px-4 py-4">
+            <div className="sm:border-r border-b border-gray-200 px-4 py-4">
               <div className="space-y-2">
                 <FormField
                   control={form.control}

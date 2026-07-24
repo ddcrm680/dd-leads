@@ -27,8 +27,8 @@ export function InfoRow({
           <Input
             value={tempValue}
             className={cn(
-              "h-8 pl-3 rounded-[4px] bg-white shadow-none",
-              "border-[#D1D5DB] focus-visible:ring-blue-500",
+              "h-8 pl-3 rounded-[4px] bg-white dark:bg-gray-900 shadow-none",
+              "border-gray-300 dark:border-gray-700 focus-visible:ring-blue-500",
             )}
             onChange={(e) => setTempValue(e.target.value)}
           />
@@ -39,8 +39,8 @@ export function InfoRow({
           <Input
             type="number"
             className={cn(
-              "h-8 pl-3 rounded-[4px] bg-white shadow-none",
-              "border-[#D1D5DB] focus-visible:ring-blue-500",
+              "h-8 pl-3 rounded-[4px] bg-white dark:bg-gray-900 shadow-none",
+              "border-gray-300 dark:border-gray-700 focus-visible:ring-blue-500",
             )}
             value={tempValue}
             onChange={(e) => setTempValue(e.target.value)}
@@ -52,8 +52,8 @@ export function InfoRow({
           <Input
             type="date"
             className={cn(
-              "h-8 pl-3 rounded-[4px] bg-white shadow-none",
-              "border-[#D1D5DB] focus-visible:ring-blue-500",
+              "h-8 pl-3 rounded-[4px] bg-white dark:bg-gray-900 shadow-none",
+              "border-gray-300 dark:border-gray-700 focus-visible:ring-blue-500",
             )}
             value={tempValue}
             onChange={(e) => setTempValue(e.target.value)}
@@ -63,7 +63,7 @@ export function InfoRow({
       case "select":
         return (
           <select
-            className="w-full h-8 rounded-[4px] bg-white border-[#D1D5DB] border border-input px-3 text-sm focus:ring-2 focus:ring-ring"
+            className="w-full h-8 rounded-[4px] bg-white dark:bg-gray-900 border-gray-300 dark:border-gray-700 border border-input px-3 text-sm focus:ring-2 focus:ring-ring"
             value={tempValue}
             onChange={(e) => setTempValue(e.target.value)}
           >
@@ -82,14 +82,14 @@ export function InfoRow({
               type="number"
               value={tempValue}
               className={cn(
-                "h-8 pl-3 rounded-[4px] bg-white shadow-none",
-                "border-[#D1D5DB] focus-visible:ring-blue-500",
+                "h-8 pl-3 rounded-[4px] bg-white dark:bg-gray-900 shadow-none",
+                "border-gray-300 dark:border-gray-700 focus-visible:ring-blue-500",
               )}
               onChange={(e) => setTempValue(e.target.value)}
             />
             <select
               value={currency}
-              className="w-full h-8 rounded-[4px] bg-white border-[#D1D5DB] border border-input px-3 text-sm focus:ring-2 focus:ring-ring"
+              className="w-full h-8 rounded-[4px] bg-white dark:bg-gray-900 border-gray-300 dark:border-gray-700 border border-input px-3 text-sm focus:ring-2 focus:ring-ring"
             >
               {" "}
               <option>INR</option>
@@ -116,35 +116,58 @@ export function InfoRow({
       <div
         onClick={onEdit}
         title={label}
-        className="group flex items-center gap-3 rounded-md px-2 py-2 hover:bg-gray-100 cursor-pointer"
+        className="
+group
+flex
+items-center
+gap-2
+sm:gap-3
+rounded-md
+px-2
+sm:px-3
+py-2
+hover:bg-gray-100
+dark:hover:bg-gray-800
+cursor-pointer
+transition-colors
+"
       >
-        <Icon size={14} />
-
+        <Icon className="h-4 w-4 shrink-0 text-gray-500 dark:text-gray-400" />
         <div className="flex-1">
           {id === "label" ? (
-            <span
-              className={`rounded-full px-2 py-1 text-[14px] font-medium ${color}`}
+            <div
+              className={`rounded-full inline-flex px-2 py-0.5 text-xs sm:text-sm font-medium ${color}`}
             >
-              {value}
-            </span>
+              {value || "—"}
+            </div>
           ) : (
-            <div className="text-[14px]">{value || "—"}</div>
+            <div className="truncate text-[13px] sm:text-[14px] text-gray-900 dark:text-gray-100">
+              {value || "—"}
+            </div>
           )}
         </div>
 
-        <Pencil size={14} className="opacity-0 group-hover:opacity-100" />
+        <Pencil
+          size={14}
+          className="
+    opacity-100
+    md:opacity-0
+    md:group-hover:opacity-100
+    transition-opacity
+  "
+        />
       </div>
     );
   }
   return (
-    <div className="rounded-md bg-gray-50 p-2">
+    <div className="rounded-md bg-gray-50 dark:bg-gray-800 p-2">
       <div className="flex items-start gap-3">
         <Icon size={14} />
 
         <div className="flex-1">
           {renderEditor()}
 
-          <div className="mt-2 flex justify-end gap-2">
+          <div className="mt-3 flex flex-wrap justify-end gap-2">
             <Button
               onClick={onCancel}
               variant="outline"

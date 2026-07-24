@@ -58,12 +58,12 @@ export default function RightPanel() {
 
   const [showHistory, setShowHistory] = useState(true);
   return (
-    <div className="flex h-full flex-col bg-[#f5f5f6]">
+    <div className="flex h-full flex-col bg-gray-100 dark:bg-gray-950">
       {/* Top */}
       <div className="rounded-[4px] bg-white border-b shadow-[0_0_1px_1px_rgb(0_0_0/5%),0_1px_2px_-2px_rgb(0_0_0/6%),0_1px_3px_0_rgb(0_0_0/7%)]">
         {/* Tabs */}
         <div className="flex items-center justify-between h-10 pr-4">
-          <div className="flex h-full">
+          <div className="flex h-full flex-row">
             <Tab active icon={<FileText size={14} />} title="Notes" />
 
             <Tab icon={<Calendar size={14} />} title="Activity" />
@@ -76,7 +76,7 @@ export default function RightPanel() {
 
         {/* Editor */}
 
-        <div className="bg-[#FFF7D7] ">
+        <div className="bg-amber-50 dark:bg-gray-900">
           <div className="w-full ">
             <RichTextEditor
               value={editorValue}
@@ -116,9 +116,18 @@ export default function RightPanel() {
               {notes.map((note) => (
                 <div
                   key={note.id}
-                  className="rounded-[4px] border border-[#ffcfad] bg-[#fff2e9] px-4 py-2  transition"
+                  className="
+rounded-md
+border
+border-orange-200
+dark:border-orange-900
+bg-orange-50
+dark:bg-orange-950/30
+px-4
+py-2
+"
                 >
-                  <div className="grid grid-cols-[70%_30%] gap-4 items-start">
+                  <div className="grid  grid-cols-1  sm:grid-cols-[70%_30%] gap-4 items-start">
                     <div
                       className="prose prose-sm min-w-0 italic text-xs break-words overflow-hidden"
                       dangerouslySetInnerHTML={{
@@ -126,7 +135,7 @@ export default function RightPanel() {
                       }}
                     />
 
-                    <span className="text-right text-xs text-gray-500">
+                    <span className="text-gray-500 dark:text-gray-400">
                       {note.createdAt.toLocaleString()}
                     </span>
                   </div>
@@ -227,8 +236,8 @@ function Tab({
     <button
       className={`flex text-[14px] items-center gap-2 px-4 border-b-2 ${
         active
-          ? "border-blue-600 text-blue-600 bg-[#eff6ff]"
-          : "border-transparent text-gray-600 hover:text-black"
+          ? "border-blue-600 bg-blue-50 text-blue-600 dark:bg-blue-950 dark:text-blue-400"
+          : "border-transparent text-gray-600 hover:text-black dark:text-gray-400 dark:hover:text-white"
       }`}
     >
       {icon}
